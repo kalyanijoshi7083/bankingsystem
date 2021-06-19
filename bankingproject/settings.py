@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-82w5ggwj&5zakkwc&lw7o%uh%r!$ex#k-cfkllu@n22-#y+6fj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG= True
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kalyani-banking-system.herokuapp.com']
 
 
 # Application definition
