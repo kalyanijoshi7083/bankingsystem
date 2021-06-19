@@ -1,0 +1,76 @@
+{% extends 'bankingapp/base.html' %}
+{% load static %}
+
+{% block title %} Transfer {% endblock %}
+py
+{% block body %}
+
+<!-- Header -->
+<header id="header" class="header">
+
+    <div class="header-content">
+        <div class="container" style="margin-right: auto; width: 50%;">
+            <h1><span class="turquoise">Tranfer Money</span></h1>
+
+            <div style="">
+                <!--     form       -->
+                {% if error_current_balance is not None %}
+                    <div class="alert alert-warning" role="alert">
+                        {{ error_current_balance }}<br>
+                    </div>
+                {% endif %}
+
+                {% if invalid_user is not None %}
+                <div class="alert alert-warning" role="alert">
+                    {{ invalid_user }}
+                </div>
+                {% endif %}
+
+                <form id="login-form" class="form" action="" method="get">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="customer_name" class="text-info">Customer name</label><br>
+                        <input type="text" name="customer_name" id="customer_name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bank" class="text-info">Bank</label><br>
+                        <input type="text" name="bank" id="bank" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branch" class="text-info">Branch</label><br>
+                        <input type="text" name="branch" id="branch" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account_no" class="text-info">Account number</label><br>
+                        <input type="text" name="account_no" id="account_no" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount" class="text-info">Amount</label><br>
+                        <input type="number" step="any" name="amount" id="amount" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-outline-primary" value="Transfer"
+                               formmethod="post">
+                    </div>
+                </form>
+
+                <!--     end form       -->
+
+
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <a class="btn-solid-lg page-scroll" href="{{request.META.HTTP_REFERER}}">Back</a>
+            </div>
+
+        </div> <!-- end of container -->
+    </div> <!-- end of header-content -->
+</header> <!-- end of header -->
+<!-- end of header -->
+
+{% endblock %}

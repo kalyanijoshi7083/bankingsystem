@@ -1,0 +1,38 @@
+{% extends 'bankingapp/base.html' %}
+{% load static %}
+
+{% block title %} Customer details {% endblock %}
+
+{% block body %}
+<!-- Header -->
+<header id="header" class="header">
+    <div class="header-content">
+        <div class="container">
+            <h1><span class="turquoise">{{ customer.customer_name }}</span></h1>
+
+            <!--    card      -->
+            <div class="card">
+  <h4 class="card-header">Account No: {{ customer.account_no }}</h4>
+  <div class="card-body">
+<!--    <h5 class="card-title">Special title treatment</h5>-->
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">Account holder: {{ customer.customer_name }} </li>
+    <li class="list-group-item">Bank: {{ customer.bank_name }} </li>
+    <li class="list-group-item">Branch: {{ customer.branch }} </li>
+    <li class="list-group-item">Email: {{ customer.email }} </li>
+    <li class="list-group-item">Balance: {{ customer.current_balance }} </li>
+  </ul>
+
+    <a href="{% url 'transfer_money' customer.pk %}" class="btn btn-outline-primary" style="margin-top: 40px; text-decoration: none;">Transfer</a>
+  </div>
+</div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <a class="btn-solid-lg page-scroll" href="{% url 'view_all_customers' %}" >Back</a>
+            </div>
+
+        </div> <!-- end of container -->
+    </div> <!-- end of header-content -->
+</header> <!-- end of header -->
+<!-- end of header -->
+{% endblock %}

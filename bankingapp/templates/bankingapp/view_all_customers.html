@@ -1,0 +1,49 @@
+{% extends 'bankingapp/base.html' %}
+{% load static %}
+
+{% block title %} All Customers {% endblock %}
+
+{% block body %}
+
+<!-- Header -->
+<header id="header" class="header">
+    <div class="header-content">
+        <div class="container">
+            <h1><span class="turquoise">All Customers</span></h1>
+
+            <!--            tables-->
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Sr. No</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Current Balance</th>
+                    <th scope="col">View</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {% for customer in customers %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ customer.customer_name }}</td>
+                    <td>{{ customer.account_no }}</td>
+                    <td>{{ customer.current_balance }}</td>
+                    <td><a href="{% url 'customer_detail' customer.pk %}" class="btn btn-outline-primary" style="text-decoration:none;">view</a></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <a class="btn-solid-lg page-scroll" href="../">Back</a>
+            </div>
+
+        </div> <!-- end of container -->
+    </div> <!-- end of header-content -->
+</header> <!-- end of header -->
+
+{% endblock %}
